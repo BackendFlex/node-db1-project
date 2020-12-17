@@ -29,14 +29,43 @@ router.get("/:id", async (req,res,next) => {
     }
 })
 
-router.post("/", async (req,res,next) => {
-    try{
+// router.post("/", async (req,res,next) => {
+//     try{
 
-    }
-    catch(err){
-        next(err)
-    }
-})
+//         const newId = req.params.id
+//         const newName = `account=${newId}`
+//         const newAccount = {
+//             name: newName,
+//             budget: req.body.budget
+//         }
+// // maybe this instead of the one above...
+//         // { 
+//         //     name: req.body.name,
+//         //     budget: req.body.budget
+//         // }
+
+//         if(!newAccount.budget){
+//             return res.status(400).json({
+//                 message: "You need a budget"
+//             })
+//         }
+
+//         const [id] = await db
+//             .insert(newAccount)
+//             .into("accounts")
+//         const account = await db
+//             .select("*")
+//             .from("accounts")
+//             .where("id", id)
+
+//         res.status(201).json(account)
+//     }
+
+//     }
+//     catch(err){
+//         next(err)
+//     }
+// })
 
 router.put("/:id", async (req,res,next) => {
     try{

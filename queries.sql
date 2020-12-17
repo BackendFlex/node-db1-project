@@ -1,7 +1,7 @@
 -- Database Queries
 -- Find all customers with postal code 1010
-SELECT * FROM Customers
-WHERE postalCode = '1010';
+-- SELECT * FROM Customers
+-- WHERE PostalCode = '1010';
 
 12  	Cactus Comidas para llevar  	Patricio Simpson  	Cerrito 333  	Buenos Aires  	1010  	Argentina 
 
@@ -10,9 +10,9 @@ WHERE postalCode = '1010';
 64  	Rancho grande  	Sergio Gutiérrez  	Av. del Libertador 900  	Buenos Aires  	1010  	Argentina 
 
 -- Find the phone number for the supplier with the id 11
-SELECT * 
-FROM Suppliers
-WHERE SupplierID = 11;
+-- SELECT * 
+-- FROM Suppliers
+-- WHERE SupplierID = 11;
 
 11  	Heli Süßwaren GmbH & Co. KG  	Petra Winkler  	Tiergartenstraße 5  	Berlin  	10785  	Germany  	(010) 9984510 
 
@@ -37,8 +37,8 @@ LIMIT 10;
 
 
 -- Find all customers that live in London, Madrid, or Brazil
-SELECT * FROM Customers
-WHERE City = 'London' OR City = 'Madrid' OR Country = 'Brazil';
+-- SELECT * FROM Customers
+-- WHERE City = 'London' OR City = 'Madrid' OR Country = 'Brazil';
 
 4  	Around the Horn  	Thomas Hardy  	120 Hanover Sq.  	London  	WA1 1DP  	UK 
 8  	Bólido Comidas preparadas  	Martín Sommer  	C/ Araquil, 67  	Madrid  	28023  	Spain 
@@ -51,14 +51,15 @@ WHERE City = 'London' OR City = 'Madrid' OR Country = 'Brazil';
 72  	Seven Seas Imports  	Hari Kumar  	90 Wadhurst Rd.  	London  	OX15 4NB  	UK 
 
 --- Add a customer record for "The Shire", the contact name is "Bilbo Baggins" the address is -"1 Hobbit-Hole" in "Bag End", postal code "111" and the country is "Middle Earth"
-Insert into Customers (Country, CustomerName, Address, City, PostalCode)
-Values ('Middle Earth', 'Bilbo Baggins', '1 Hobbit-Hole', 'Bag End', '111')
+
+-- Insert into Customers (Country, CustomerName, Address, City, PostalCode)
+-- Values ('Middle Earth', 'Bilbo Baggins', '1 Hobbit-Hole', 'Bag End', '111')
 
 -- Update Bilbo Baggins record so that the postal code changes to "11122"
 
-Update Customers
-SET postalCode = '11122'
-WHERE customerId = 92;
+-- Update Customers
+-- SET postalCode = '11122'
+-- WHERE customerId = 92;
 
 -- (Stretch) Find a query to discover how many different cities are stored in the Customers table. Repeats should not be double counted
 
