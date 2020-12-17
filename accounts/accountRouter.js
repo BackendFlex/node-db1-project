@@ -6,7 +6,9 @@ const router = express.Router()
 
 router.get("/", async (req,res,next) => {
     try{
-
+        const accounts = await db.select("*")
+            .from("accounts")
+            res.json(accounts)
     }
     catch(err){
         next(err)
@@ -15,7 +17,12 @@ router.get("/", async (req,res,next) => {
 
 router.get("/:id", async (req,res,next) => {
     try{
-
+        const account = await db
+        .select("*")
+        .from("accounts")
+        .where("id", req.params.id)
+        .limit(1)
+      res.json(account)
     }
     catch(err){
         next(err)
@@ -33,7 +40,25 @@ router.post("/", async (req,res,next) => {
 
 router.put("/:id", async (req,res,next) => {
     try{
+        const payload = {
+            name: req.body.name,
+            budget: req.body.budget
+        }
 
+        if (!payload.name || !payload.budget) {
+            return res.status(400).json({
+                message: "Need both a name and a budget"
+            })
+        }
+
+        //UPDATE accounts SET name = ? AND budget =? WHERE ID = ?
+        await db('accounts').where('id', req.params.id).update(payload)
+        const account = await db
+            .first("*")
+            .from('accounts')
+            .where('id', req.params.id)
+        
+        res.status(201).json(account)
     }
     catch(err){
         next(err)
@@ -42,7 +67,11 @@ router.put("/:id", async (req,res,next) => {
 
 router.delete("/:id", async (req,res,next) => {
     try{
+         //DELETE FROM accounts WHERE ID =?
 
+         await db('accounts').where('id', req.params.id).del()
+
+         res.status(204).end()
     }
     catch(err){
         next(err)
